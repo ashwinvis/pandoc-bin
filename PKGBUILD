@@ -1,5 +1,5 @@
 pkgname=pandoc-bin
-pkgver=2.7.3
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Pandoc - executable only, without 750MB Haskell depends/makedepends"
 url="http://pandoc.org"
@@ -8,21 +8,19 @@ arch=('x86_64')
 conflicts=("pandoc")
 provides=("pandoc")
 replaces=('pandoc-static' 'pandoc-lite')
-depends=('cmark')
+depends=()
 optdepends=(
-    'pandoc-citeproc-bin: for citation rendering with pandoc-citeproc filter'
-    'pandoc-crossref-bin: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter'
     'texlive-core: for pdf output'
 )
 
 source=(
-    "https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-linux.tar.gz"
+    "https://github.com/jgm/pandoc/releases/download/${pkgver}/pandoc-${pkgver}-linux-amd64.tar.gz"
 
     # The binary release doesnt have the datafiles, so we need to yoink those out of the source tarball, too.
     "https://github.com/jgm/pandoc/archive/${pkgver}.tar.gz"
 )
-sha256sums=('eb775fd42ec50329004d00f0c9b13076e707cdd44745517c8ce2581fb8abdb75'
-            'e21eabd337a648bf3ab218b46745d23d18666296133bea441c3cba40e3bac0e7')
+sha256sums=('039f155b6166c1e268479bcb06af2dba99eb7795cbff7b3c13b4875388195d08'
+            '06ffc031471c0edc26e40d14574830e3ab289dda22504b0d8361fbfb1a83cc30')
 
 package() {
     cd "${srcdir}/pandoc-${pkgver}"
